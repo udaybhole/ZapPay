@@ -22,11 +22,15 @@ const getp2ptransaction = async () => {
   
   export default async function () {
     const transactions = await getp2ptransaction();
-    return (
+    return (<div>
+        <div className="text-4xl text-[#6a51a6] pt-8 mb-8 font-bold">
+            TRANSACTIONS
+        </div>
       <div className="flex justify-center items-center w-[80vw] gap-20">
         <div className="w-[80%] pb-14">
           <P2pTransactions transactions={transactions} />
         </div>
+      </div>
       </div>
     );
   }

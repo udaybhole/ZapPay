@@ -23,13 +23,19 @@ const getp2ptransaction = async () => {
 export default async function () {
   const transactions = await getp2ptransaction();
   return (
-    <div className="flex justify-center items-center w-[80vw] gap-20">
+    <div>
+        <div className="text-4xl text-[#6a51a6] pt-8 font-bold">
+            P2P TRANSFER
+        </div>
+    <div className="flex justify-center items-center w-[80vw] gap-20  ">
       <div className="w-[30%]">
         <SendCard />
       </div>
       <div className="w-[60%]">
         <P2pTransactions transactions={transactions} />
       </div>
+    </div>
+    
     </div>
   );
 }
