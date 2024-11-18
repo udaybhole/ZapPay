@@ -1,4 +1,4 @@
-
+import GoogleProvider from "next-auth/providers/google";
 import db from "@repo/db/client";
 import CredentialsProvider from "next-auth/providers/credentials"
 import bcrypt from "bcrypt";
@@ -63,6 +63,7 @@ export const authOptions = {
                 return null
             },
         })
+        
     ],
     
     secret: process.env.JWT_SECRET || "secret",
@@ -71,7 +72,10 @@ export const authOptions = {
             session.user.id = token.sub
 
             return session
-        }
+        },
+    
+           
+          
     }
 
 }
