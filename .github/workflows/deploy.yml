@@ -45,3 +45,4 @@ jobs:
           sudo docker stop zappay-${{ matrix.image }} || true
           sudo docker rm zappay-${{ matrix.image }} || true
           sudo docker run -d --name zappay-${{ matrix.image }} -p 3005:3000 udaybhole/zappay:${{ matrix.image }}-latest
+          
