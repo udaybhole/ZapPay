@@ -34,7 +34,7 @@ jobs:
         push: true
         tags: udaybhole/zappay:${{ matrix.image }}-latest
 
-    - name: Deploy to EC2
+     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -44,5 +44,5 @@ jobs:
           sudo docker pull udaybhole/zappay:${{ matrix.image }}-latest
           sudo docker stop zappay-${{ matrix.image }} || true
           sudo docker rm zappay-${{ matrix.image }} || true
-          sudo docker run -d --name zappay-${{ matrix.image }} -p 3005:3000 udaybhole/zappay:${{ matrix.image }}-latest
+          sudo docker run -d --name zappay-${{ matrix.image }} -p ${{ matrix.port }}:3000 udaybhole/zappay:${{ matrix.image }}-latest
           
