@@ -7,7 +7,8 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "db:generate":"cd packages/db && npx prisma generate && cd ../../",
-    "dev-user-app": "cd ./apps/user-app && npm run dev"
+    "dev-user-app": "cd ./apps/user-app && npm run dev",
+    "dev-bank-webhook": "cd ./apps/bank-webhook && npm run dev"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
