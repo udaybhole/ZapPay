@@ -42,4 +42,4 @@ jobs:
           sudo docker pull udaybhole/zappay:user-app-latest
           sudo docker stop zappay || true
           sudo docker rm zappay || true
-          sudo docker run -d --name zappay -p 3005:3000 udaybhole/zappay:user-app-latest
+          sudo docker run -d --name zappay -p 3001:3000 udaybhole/zappay:user-app-latest
