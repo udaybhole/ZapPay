@@ -32,7 +32,7 @@ jobs:
         context: .
         file: ${{ matrix.dockerfile }}
         push: true
-        tags: udaybhole/zappay-${{ matrix.image }}:latest
+        tags: udaybhole/zappay:latest
 
     - name: Verify Pushed Image
-      run: docker pull udaybhole/zappay-${{ matrix.image }}:latest
+      run: docker pull udaybhole/zappay:latest
