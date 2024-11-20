@@ -32,19 +32,16 @@ jobs:
         context: .
         file: ${{ matrix.dockerfile }}
         push: true
-        tags: udaybhole/zappay:latest
+        tags: udaybhole/zappay:${{ matrix.image }}-latest
 
-    - name: Verify Pushed Image
-      run: docker pull udaybhole/zappay:latest
-
-     - name: Deploy to EC2
+    - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          sudo docker pull udaybhole/zappay:latest
-          sudo docker stop zappay || true
-          sudo docker rm zappay || true
-          sudo docker run -d --name zappay -p 3005:3000 udaybhole/zappay:latest
+          sudo docker pull udaybhole/zappay:${{ matrix.image }}-latest
+          sudo docker stop zappay-${{ matrix.image }} || true
+          sudo docker rm zappay-${{ matrix.image }} || true
+          sudo docker run -d --name zappay-${{ matrix.image }} -p 3005:3000 udaybhole/zappay:${{ matrix.image }}-latest
