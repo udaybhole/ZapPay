@@ -22,7 +22,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./Dockerfile
+        file: ./docker/Dockerfile.user
+        file: ./docker/Dockerfile.bank
         push: true
         tags: udaybhole/zappay:latest  # Replace with your Docker Hub username and repository
 
