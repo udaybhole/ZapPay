@@ -11,12 +11,7 @@
         "./client": "./index.ts"
     },
     "prisma": {
-        "seed": "ts-node prisma/seed.ts"
-    },
-
-    "scripts": {
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "start:prod": "prisma migrate deploy && node dist/main"
-  }
+        "seed": "ts-node prisma/seed.ts",
+         "schema": "db/schema.prisma"
+    }
 }
