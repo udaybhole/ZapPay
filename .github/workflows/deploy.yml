@@ -52,4 +52,6 @@ jobs:
           sudo docker run -d --name zappay \
                           -p 3005:3001 \
                           -e NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} \
+                          -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+                            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
                           udaybhole/zappay:latest
