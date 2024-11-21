@@ -12,6 +12,6 @@
     },
     "prisma": {
         
-        "schema": "db/schema.prisma"
+        "schema": "db/prisma/schema.prisma"
     }
 }
