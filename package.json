@@ -6,13 +6,13 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "db:generate":"cd packages/db && npx prisma generate && cd ../../",
+    "db:generate": "cd packages/db && npx prisma generate && cd ../../",
     "dev-user-app": "cd ./apps/user-app && npm run dev",
     "dev-bank-webhook": "cd ./apps/bank-webhook && npm run dev"
   },
   "prisma": {
-  "schema": "./packages/db/prisma/schema.prisma"
-},
+    "schema": "./packages/db/prisma/schema.prisma"
+  },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
@@ -26,5 +26,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@prisma/engines": "^5.22.0"
+  }
 }
