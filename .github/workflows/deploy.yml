@@ -49,7 +49,6 @@ jobs:
           sudo docker pull udaybhole/zappay:latest 
           sudo docker stop zappay || true
           sudo docker rm zappay || true
-          
           sudo docker run -d --name zappay \
          -p 3005:3001 \
          -e NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} \
