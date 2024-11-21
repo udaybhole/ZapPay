@@ -16,7 +16,7 @@ jobs:
     - name: Run Database Migrations
       run: |
         npm install prisma
-        prisma generate --schema=packages\db\prisma\schema.prisma
+        npx prisma migrate deploy
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
 

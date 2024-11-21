@@ -10,6 +10,9 @@
     "dev-user-app": "cd ./apps/user-app && npm run dev",
     "dev-bank-webhook": "cd ./apps/bank-webhook && npm run dev"
   },
+  "prisma": {
+  "schema": "db/schema.prisma"
+},
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
