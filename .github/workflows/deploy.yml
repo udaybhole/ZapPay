@@ -8,14 +8,15 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    environment: ENV FILE
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v2
     
     - name: Run Database Migrations
       run: |
-        npm install -g prisma
-        prisma migrate deploy
+        npm install prisma
+        npx prisma migrate deploy
       env:
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
