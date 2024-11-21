@@ -73,6 +73,13 @@ export const authOptions = {
 
             return session
         },
+
+        async jwt({ token, user } : any) {
+            if (user) {
+                token.id = user.id; // Attach user ID to the token
+            }
+            return token;
+        }
     
            
           
