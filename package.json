@@ -11,7 +11,7 @@
     "dev-bank-webhook": "cd ./apps/bank-webhook && npm run dev"
   },
   "prisma": {
-  "schema": "db/prisma/schema.prisma"
+  "schema": "./packages/db/prisma/schema.prisma"
 },
   "devDependencies": {
     "@repo/eslint-config": "*",
