@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: ENV FILE
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v2
@@ -37,20 +36,20 @@ jobs:
         push: true
         tags: udaybhole/latest
 
-    # - name: Verify Pushed Image
-    #   run: docker pull udaybhole/zappay:latest
+    - name: Verify Pushed Image
+      run: docker pull udaybhole/zappay:latest
 
-    # - name: Deploy to EC2
-    #   uses: appleboy/ssh-action@master
-    #   with:
-    #     host: ${{ secrets.SSH_HOST }}
-    #     username: ${{ secrets.SSH_USERNAME }}
-    #     key: ${{ secrets.SSH_KEY }}
-    #     script: |
-    #       sudo docker pull udaybhole/zappay:latest
-    #         sudo docker stop zappay || true
-    #         sudo docker rm zappay || true
-    #         sudo docker run -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
-    #                         -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
-    #                         -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
-    #                         -d --name zappay --restart unless-stopped -p 3005:3001 udaybhole/zappay:latest
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          sudo docker pull udaybhole/zappay:latest
+            sudo docker stop zappay || true
+            sudo docker rm zappay || true
+            sudo docker run -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+                            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+                            -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
+                            -d --name zappay  -p 3005:3001 udaybhole/zappay:latest
