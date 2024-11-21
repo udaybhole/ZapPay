@@ -11,6 +11,13 @@ jobs:
     steps:
     - name: Check Out Repo
       uses: actions/checkout@v2
+    
+     - name: Run Database Migrations
+      run: |
+        npm install -g prisma
+        prisma migrate deploy
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
     - name: Prepare Dockerfile
       run: cp ./docker/Dockerfile.user ./Dockerfile
@@ -39,7 +46,10 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          sudo docker pull udaybhole/zappay:user-app-latest
-          sudo docker stop zappay || true
-          sudo docker rm zappay || true
-          sudo docker run -d --name zappay -p 3005:3001 udaybhole/zappay:user-app-latest
+          sudo docker pull akshatwork6/user-app-image:latest
+            sudo docker stop web-app || true
+            sudo docker rm web-app || true
+            sudo docker run -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+                            -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
+                            -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
+                            -d --name web-app --restart unless-stopped -p 80:3000 akshatwork6/user-app-image:latest
