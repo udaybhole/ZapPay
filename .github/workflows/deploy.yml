@@ -3,7 +3,7 @@ name: Build and Deploy to Docker Hub
 on:
   push:
     branches:
-      - master  # Adjusted to trigger on pushes to master
+      - master  
 
 jobs:
   build-and-push:
@@ -53,3 +53,4 @@ jobs:
                             -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
                             -e NEXTAUTH_URL=${{ vars.NEXTAUTH_URL }} \
                             -d --name zappay  -p 3005:3001 udaybhole/zappay:latest
+                            
