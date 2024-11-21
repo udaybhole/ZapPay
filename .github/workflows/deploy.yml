@@ -34,7 +34,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: udaybhole/latest
+        tags: udaybhole/zappay:latest
 
     - name: Verify Pushed Image
       run: docker pull udaybhole/zappay:latest
