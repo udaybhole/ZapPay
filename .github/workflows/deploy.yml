@@ -39,7 +39,7 @@ jobs:
     - name: Verify Pushed Image
       run: docker pull udaybhole/zappay:latest
 
-     - name: Deploy to EC2
+    - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
@@ -50,6 +50,6 @@ jobs:
           sudo docker stop zappay || true
           sudo docker rm zappay || true
           sudo docker run -d --name zappay \
-         -p 3005:3001 \
-         -e NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} \
-         udaybhole/zappay:latest  
+                          -p 3005:3001 \
+                          -e NEXTAUTH_URL=${{ secrets.NEXTAUTH_URL }} \
+                          udaybhole/zappay:latest
