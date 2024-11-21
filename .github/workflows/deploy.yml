@@ -39,6 +39,8 @@ jobs:
     - name: Verify Pushed Image
       run: docker pull udaybhole/zappay:latest
 
+
+
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
       with:
@@ -56,7 +58,7 @@ jobs:
                             -e DATABASE_URL=${{ secrets.DATABASE_URL }} \
                           udaybhole/zappay:latest
 
-                          
+
 
 
 
